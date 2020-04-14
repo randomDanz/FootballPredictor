@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Player Data</title>
+	<!-- Bootstrap -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style2.css') }}">
+
+</head>
+<body>
+<div class="header">
+  	<a href="#default" class="logo">Football Prediction</a>
+  	<div class="header-right">
+    <a href="/">Home</a>
+    <a class="active" href="players">Players</a>
+    <a href="table">Table</a>
+  </div>
+</div>
+<div class="hd">
+<h2 style="margin-top:2%; margin-left:5%; color:black">Current Season Player Statistics</h2>
+</div>
+<div class="container">
+	<br>
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Team</th>
+					<th>position</th>
+					<th>Appearances</th>
+					<th>Minutes</th>
+					<th>Goals</th>
+					<th>Assists</th>
+					<th>Rating</th>
+					<th>xG</th>
+					<th>xA</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for i in range(0,10) %}
+				<tr>
+					{% set j=0 %}
+					<td>{{ users[j][i] }}</td>
+					{% set j=j+1 %}
+					<td>{{ users[j][i] }}</td>
+					{% set j=j+1 %}
+					<td>{{ users[j][i] }}</td>
+					{% set j=j+1 %}
+					<td>{{ users[j][i] }}</td>
+					{% set j=j+1 %}
+					<td>{{ users[j][i] }}</td>
+					{% set j=j+1 %}
+					<td>{{ users[j][i] }}</td>
+					{% set j=j+1 %}
+					<td>{{ users[j][i] }}</td>
+					{% set j=j+1 %}
+					<td>{{ users[j][i] }}</td>
+					{% set j=j+1 %}
+					<td>{{ users[j][i] }}</td>
+					{% set j=j+1 %}
+					<td>{{ users[j][i] }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{{ pagination.links }}
+</div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style1.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<title>Football Prediction</title>
+
+</head>
+<body>
+<div class="header">
+  	<a href="#default" class="logo">Football Prediction</a>
+  	<div class="header-right">
+    <a href="/">Home</a>
+    <a href="players">Players</a>
+    <a href="table">Table</a>
+  </div>
+</div>
+<div>
+	<div class="imgcontainer">
+	{% set imgname=q[0][3]+".png" %}
+	<img src="{{ url_for( 'static', filename=imgname) }}" style="width:200px;height:200px; margin-top:15%; margin-left:20%;">
+	</div>
+	<h1 align="center">{{ q[0][3] }}
+</div>
+<div class="tabContainer">
+	<br>
+    <div class="buttonContainer" style="margin-left:1%">
+        <button onclick="showPanel(0,'#f44336')">Team Data</button>
+        <button onclick="showPanel(1,'#4caf50')">Player Data</button>
+        <button onclick="showPanel(2,'#2196f3')">Predicted Position</button>
+    </div>
+    <div class="tabPanel">
+			<br>
+			<h3 style="margin-left:2%"> Team Data </h3>
+    <table name="i" style="margin-left:1%">
+      <tr>
+				<th>League</th>
+        <th>Season</th>
+        <th>Position</th>
+        <th>Team</th>
+				<th>Matches</th>
+        <th>Wins</th>
+        <th>Draws</th>
+        <th>Lost</th>
+        <th>Goals</th>
+        <th>GA</th>
+				<th>GD</th>
+				<th>Points</th>
+				<th>SpG</th>
+				<th>Yellows</th>
+				<th>Reds</th>
+				<th>Possession%</th>
+				<th>Pass%</th>
+				<th>Aerials Won</th>
+				<th>Rating</th>
+      </tr>
+        {% for i in range(0,len-2)%}
+					<tr>
+          {% for j in range(0,19) %}
+						<td> {{ q[i][j] }} </td>
+        	{% endfor %}
+      		</tr>
+				{% endfor %}
+      </table>
+			<br>
+			<h3 style="margin-left:2%">Advanced Statistics</h3>
+			<table name="i" style="margin-left:1%; border:1px #ddd;">
+				<tr>
+					<th>xG</th>
+					<th>xG Diff</th>
+					<th>xGA</th>
+					<th>xGA Diff</th>
+					<th>xGD</th>
+					<th>xGD Diff</th>
+					<th>Deep</th>
+					<th>Deep Allowed</th>
+					<th>XPts</th>
+					<th>XPts Diff</th>
+				</tr>
+				{% for i in range(0,len-2)%}
+					<tr>
+					{% for j in range(19,29) %}
+						<td> {{ q[i][j] }} </td>
+					{% endfor %}
+					</tr>
+				{% endfor %}
+			</table>
+    </div>
+		<div class="tabPanel" style="margin-left:1%">
+			<br>
+			<table name="i">
+				<tr>
+					<th>Season</th>
+					<th>Nos</th>
+					<th>Name</th>
+					<th>Team</th>
+					<th>Appearences</th>
+					<th>Minutes</th>
+					<th>Goals</th>
+					<th>Assists</th>
+					<th>xG</th>
+					<th>xG Diff</th>
+					<th>xA</th>
+					<th>xA Diff</th>
+					<th>xG90</th>
+					<th>xA90</th>
+				</tr>
+				{% for i in q[len-2] %}
+					<tr>
+						{% for j in i%}
+							<td> {{ j }} </td>
+						{% endfor %}
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+    <div class="tabPanel" style="margin-left:1%">
+			<br>
+      <table name="i">
+        <tr>
+          <th>Team</th>
+          <th>Points</th>
+          <th>Goal Difference</th>
+        </tr>
+        {% for i in q[len-1]%}
+          <tr>
+            {% for j in i%}
+              <td> {{ j }} </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='myScript.js') }}"></script>
+<div class="mainbody">
+
+</div>
+</body>
+</html>

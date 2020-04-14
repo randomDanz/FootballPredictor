@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Football Prediction</title>
+
+</head>
+<body>
+<div class="header">
+  	<a href="#default" class="logo">Football Prediction</a>
+  	<div class="header-right">
+    <a class="active" href="/">Home</a>
+
+    <a href="players">Players</a>
+    <a href="table">Table</a>
+  </div>
+</div>
+	<h1 style="color: white">{{ str }}</h1>
+<div class="mainbody">
+	<form method="post" action="displayData">
+	<input type="text" name="search" placeholder="Enter Name of Player or Team..." class="searchBar	">
+	<button type="submit" name="sb"><i class="fa fa-search"></i></button>
+	</form>
+</div>
+</body>
+</html>

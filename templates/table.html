@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>League Table</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style1.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Table</title>
+</head>
+<body>
+<div class="header">
+  	<a href="#default" class="logo">Football Prediction</a>
+  	<div class="header-right">
+    <a href="/">Home</a>
+
+    <a href="players">Players</a>
+    <a href="table" class="active">Table</a>
+  </div>
+</div>
+
+<div class="main">
+	<br>
+	<table id="years" style="margin-left:1%; border:none;">
+		<tr>
+			<th><a href="{{ url_for('table') }}"><button class="btn">2019</button></td>
+			<th><a href="{{ url_for('table1') }}"><button class="btn">2018</button></td>
+			<th><a href="{{ url_for('table2') }}"><button class="btn">2017</button></td>
+			<th><a href="{{ url_for('table3') }}"><button class="btn">2016</button></td>
+			<th><a href="{{ url_for('table4') }}"><button class="btn">2015</button></td>
+			<th><a href="{{ url_for('table5') }}"><button class="btn">2014</button></td>
+		</tr>
+	</table>
+	<br>
+	<br>
+  <table id='x' style="margin-left:1%">
+  	<tr>
+  		<th>Season</th>
+  		<th>position</th>
+			<th>Team</th>
+  		<th>Matches</th>
+  		<th>Wins</th>
+  		<th>Draws</th>
+  		<th>Lost</th>
+  		<th>Goals</th>
+  		<th>Goals Against</th>
+  		<th>Goal Difference </th>
+  		<th>Points</th>
+		</tr>
+
+			<tr id='x'>
+				{%for i in range(0,20)%}
+					<td> {{ season[i] }} </td>
+					<td> {{ position[i] }} </td>
+					<td> {{ team[i] }} </td>
+					<td> {{ matches[i] }} </td>
+					<td> {{ wins[i] }} </td>
+					<td> {{ draws[i] }} </td>
+					<td> {{ loses[i] }} </td>
+					<td> {{ goals[i] }} </td>
+					<td> {{ gA[i] }} </td>
+					<td> {{ gD[i] }} </td>
+					<td> {{ points[i] }} </td>
+					</tr>
+				{% endfor %}
+		</table>
+</div>
+</body>
+</html>
